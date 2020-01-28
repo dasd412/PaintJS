@@ -1,6 +1,9 @@
 const canvas=document.getElementById("jsCanvas");
 let painting =false;
 const ctx=canvas.getContext("2d");
+const colors=document.getElementsByClassName("jsColor");
+
+
 
 canvas.width=700;
 canvas.height=700;
@@ -46,5 +49,9 @@ if(canvas){
     canvas.addEventListener("mouseleave",stopPainting);
 }
 
+function changeColor(event){
+const color=event.target.style.backgroundColor;
+ctx.strokeStyle=color;
+}
 
-
+Array.from(colors).forEach(color=>color.addEventListener("click",changeColor));
