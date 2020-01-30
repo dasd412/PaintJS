@@ -2,7 +2,7 @@ const canvas=document.getElementById("jsCanvas");
 let painting =false;
 const ctx=canvas.getContext("2d");
 const colors=document.getElementsByClassName("jsColor");
-
+const range=document.getElementById("jsRange");
 
 
 canvas.width=700;
@@ -55,3 +55,13 @@ ctx.strokeStyle=color;
 }
 
 Array.from(colors).forEach(color=>color.addEventListener("click",changeColor));
+
+function handleRangeChange(event){
+    const strokeSize=event.target.value;
+    ctx.lineWidth=strokeSize;
+}
+
+if(range){
+
+    range.addEventListener("input",handleRangeChange);
+}
